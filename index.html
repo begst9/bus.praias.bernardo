@@ -1,128 +1,68 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Praiabus Turismo</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920');
-      background-size: cover;
-      background-position: center;
-    }
-    .card {
-      transition: all 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.2), 0 8px 10px -6px rgb(0 0 0 / 0.2);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placar Riachão</title>
 </head>
 
-<body class="min-h-screen bg-cover bg-center relative">
-  <!-- Overlay escuro -->
-  <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/60"></div>
+<body style="background-color: blueviolet;">
+    <h1>Placar Riachão</h1>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="placar.js">
+<form>
+    <div class="botao">
+     <button 
+     class="configuraçoes">Configurações
+    </button>
+   </div>
 
-  <div class="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-8">
+   <div class="placar1">
+    <input type="file" accept="image/*" id="uploadImagem">
+     <br><br>
+    
+    <!-- Tag onde a imagem será exibida -->
+    <img id="imagemPreview" src="" alt="Sua imagem aparecerá aqui" style="max-width: 300px; display: none;">
 
-    <!-- Header -->
-    <div class="flex items-center justify-between w-full max-w-6xl mb-10">
-      <!-- Ícone "Sem Foto" no canto esquerdo -->
-      <div class="w-14 h-14 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center border-2 border-white shadow-lg">
-        <i class="fas fa-user-slash text-3xl text-gray-500"></i>
-      </div>
-      
-      <div class="flex items-center gap-3">
-        <i class="text-5xl text-emerald-400">🌴</i>
-        <h1 class="text-4xl font-bold text-white tracking-wider drop-shadow-2xl" style="text-shadow: 0 4px 12px rgba(0,0,0,0.7)">
-          PRAIABUS TURISMO
-        </h1>
-      </div>
-    </div>
+    <script>
+        const upload = document.getElementById('uploadImagem');
+        const preview = document.getElementById('imagemPreview');
 
-    <!-- Título Pacotes - Melhorado -->
-    <div class="mb-10">
-      <div class="bg-white/95 backdrop-blur-md px-10 py-4 rounded-3xl shadow-2xl inline-block border border-white/50">
-        <h2 class="text-3xl font-bold text-gray-800 tracking-wide">
-          Pacotes Disponíveis
-        </h2>
-      </div>
-    </div>
+        upload.addEventListener('change', function(event) {
+            const arquivo = event.target.files[0];
 
-    <!-- Grid de Pacotes -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl w-full">
+            if (arquivo) {
+                const leitor = new FileReader();
 
-      <!-- Esquerda -->
-      <div class="space-y-5">
-        <button onclick="selecionarPacote(this)" class="card w-full bg-white/95 hover:bg-white text-left p-7 rounded-3xl shadow-xl">
-          <h3 class="text-2xl font-bold text-gray-800">Porto de Galinhas</h3>
-          <p class="text-emerald-600">(Ipojuca, PE)</p>
-          <p class="text-4xl font-bold text-gray-900 mt-3">R$500,00</p>
-          <p class="text-gray-600 text-lg">por pessoa</p>
-        </button>
+                // Quando a leitura terminar, altera o src da imagem
+                leitor.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block'; // Exibe a imagem
+                }
 
-        <button onclick="selecionarPacote(this)" class="card w-full bg-white/95 hover:bg-white text-left p-7 rounded-3xl shadow-xl">
-          <h3 class="text-2xl font-bold text-gray-800">Praia da Pipa</h3>
-          <p class="text-emerald-600">(Tibau do Sul, RN)</p>
-          <p class="text-4xl font-bold text-gray-900 mt-3">R$750,00</p>
-          <p class="text-gray-600 text-lg">por pessoa</p>
-        </button>
+                // Lê o arquivo como uma URL de dados
+                leitor.readAsDataURL(arquivo);
+            }
+        });
+    </script>
+   </div>
+   
+   <div class="placar2">
+    <input type="file" accept="image/*" onchange="exibirImagem">
+   </div>
 
-        <button onclick="selecionarPacote(this)" class="card w-full bg-white/95 hover:bg-white text-left p-7 rounded-3xl shadow-xl">
-          <h3 class="text-2xl font-bold text-gray-800">Ponta Verde</h3>
-          <p class="text-emerald-600">(Maceió, AL)</p>
-          <p class="text-4xl font-bold text-gray-900 mt-3">R$610,00</p>
-          <p class="text-gray-600 text-lg">por pessoa</p>
-        </button>
+   <h1 class="time1" > <input type="text">
+    <input type="number" min="0" max="1000" placeholder="0">
+   </h1>
 
-        <button onclick="selecionarPacote(this)" class="card w-full bg-white/95 hover:bg-white text-left p-7 rounded-3xl shadow-xl">
-          <h3 class="text-2xl font-bold text-gray-800">Praia do Farol</h3>
-          <p class="text-emerald-600">(Arraial do Cabo, RJ)</p>
-          <p class="text-4xl font-bold text-gray-900 mt-3">R$450,00</p>
-          <p class="text-gray-600 text-lg">por pessoa</p>
-        </button>
-      </div>
+   <h1 class="contra"> 
+         X
+   </h1>
 
-      <!-- Direita -->
-      <div class="space-y-5">
-        <button onclick="selecionarPacote(this)" class="card w-full bg-white/95 hover:bg-white text-left p-7 rounded-3xl shadow-xl">
-          <h3 class="text-2xl font-bold text-gray-800">Ilha do Campeche</h3>
-          <p class="text-emerald-600">(Florianópolis, SC)</p>
-          <p class="text-4xl font-bold text-gray-900 mt-3">R$572,00</p>
-          <p class="text-gray-600 text-lg">por pessoa</p>
-        </button>
+   <h1 class="time2"> <input type="text">
+    <input type="number" min="0" max="1000" placeholder="0">
+   </h1>
 
-        <button onclick="selecionarPacote(this)" class="card w-full bg-white/95 hover:bg-white text-left p-7 rounded-3xl shadow-xl">
-          <h3 class="text-2xl font-bold text-gray-800">Ilha do Mel</h3>
-          <p class="text-emerald-600">(Paranaguá, PR)</p>
-          <p class="text-4xl font-bold text-gray-900 mt-3">R$699,00</p>
-          <p class="text-gray-600 text-lg">por pessoa</p>
-        </button>
-      </div>
-
-    </div>
-
-    <!-- Footer -->
-    <div class="mt-16 text-center">
-      <p class="text-white text-3xl font-bold tracking-widest drop-shadow-2xl" style="text-shadow: 0 4px 12px rgba(0,0,0,0.8)">
-        LEVANDO VOCÊ DIRETO PARA O PARAÍSO!
-      </p>
-    </div>
-
-  </div>
-
-  <script>
-    function selecionarPacote(btn) {
-      // Remove seleção anterior
-      document.querySelectorAll('.card').forEach(card => {
-        card.classList.remove('ring-4', 'ring-emerald-400', 'scale-105');
-      });
-      // Adiciona seleção visual
-      btn.classList.add('ring-4', 'ring-emerald-400', 'scale-105');
-    }
-  </script>
+</form>
 </body>
 </html>
