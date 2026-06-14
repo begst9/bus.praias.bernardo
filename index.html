@@ -3,66 +3,418 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Placar Riachão</title>
+    <title>Praia Bus - Viagens para Praias</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;500&display=swap');
+        
+        :root {
+            --brown: #3C2F2F;
+            --beige: #F5F0E8;
+            --dark-brown: #2C211F;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--beige);
+            color: var(--dark-brown);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--brown);
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        nav a:hover {
+            opacity: 0.8;
+        }
+        
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding: 2rem 5%;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-brown);
+        }
+        
+        .hero img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--brown);
+        }
+        
+        .history-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .history-card {
+            background-color: var(--brown);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+        
+        .history-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .btn {
+            background-color: var(--brown);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            margin: 1rem 0;
+        }
+        
+        .btn:hover {
+            background-color: #5C4A4A;
+            transform: translateY(-3px);
+        }
+        
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--brown);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            z-index: 200;
+            font-size: 0.95rem;
+        }
+        
+        .evaluation-form {
+            display: flex;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .eval-box {
+            background-color: var(--brown);
+            color: white;
+            padding: 2rem;
+            flex: 2;
+            min-height: 400px;
+        }
+        
+        .name-box {
+            background-color: var(--brown);
+            color: white;
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .contact-page {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+        
+        .logo-circle {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #FF6B00, #00BFFF);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .destinos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .destino-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+        }
+        
+        .menu-page {
+            text-align: center;
+        }
+        
+        .menu-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            font-size: 1.4rem;
+            margin-top: 3rem;
+        }
+        
+        .star {
+            color: #D4AF37;
+        }
+    </style>
 </head>
+<body>
+    <!-- Página 1: Início -->
+    <div id="page1" class="page active">
+        <header>
+            <div class="logo">PRAIA BUS</div>
+            <nav>
+                <a href="#" onclick="navigateTo('page1')">Início</a>
+                <a href="#" onclick="navigateTo('page2')">Menu</a>
+                <a href="#" onclick="navigateTo('page3')">Sobre Nós</a>
+                <a href="#" onclick="navigateTo('page4')">Avaliações</a>
+                <a href="#" onclick="navigateTo('page6')">Destinos</a>
+            </nav>
+            <div style="border: 2px solid white; padding: 8px 20px; border-radius: 4px;">
+                VOCÊ É?
+            </div>
+        </header>
+        
+        <div class="hero">
+            <h1>BEM-VINDO A SUA<br><span style="font-style: italic; font-size: 3.8rem;">Futura Viagem</span></h1>
+            <img src="https://picsum.photos/id/1015/800/400" alt="Praia paradisíaca" style="max-width: 800px;">
+            <div style="margin-top: 2rem; background-color: var(--brown); color: white; padding: 1rem; display: inline-block; font-weight: bold;">
+                CRIADO POR: BERNARDO FARIA
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin: 3rem 0;">
+            <a href="#" onclick="navigateTo('page3')" class="btn">CONHEÇA NOSSO TRABALHO</a>
+        </div>
+    </div>
 
-<body style="background-color: blueviolet;">
-    <h1>Placar Riachão</h1>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="placar.js">
-<form>
-    <div class="botao">
-     <button 
-     class="configuraçoes">Configurações
-    </button>
-   </div>
+    <!-- Página 2: Menu -->
+    <div id="page2" class="page">
+        <a href="#" onclick="navigateTo('page1')" class="back-btn">← Voltar ao Início</a>
+        <div class="menu-page">
+            <h1 class="section-title" style="margin-top: 4rem;">MENU DO <span style="font-style: italic;">Site</span></h1>
+            <div class="menu-list">
+                <div><span class="star">✦</span> Início</div>
+                <div><span class="star">✦</span> Você é?</div>
+                <div><span class="star">✦</span> Sobre Nós</div>
+                <div><span class="star">✦</span> Avaliação</div>
+                <div><span class="star">✦</span> Destinos</div>
+            </div>
+        </div>
+    </div>
 
-   <div class="placar1">
-    <input type="file" accept="image/*" id="uploadImagem">
-     <br><br>
-    
-    <!-- Tag onde a imagem será exibida -->
-    <img id="imagemPreview" src="" alt="Sua imagem aparecerá aqui" style="max-width: 300px; display: none;">
+    <!-- Página 3: Nossa História -->
+    <div id="page3" class="page">
+        <a href="#" onclick="navigateTo('page1')" class="back-btn">← Voltar ao Início</a>
+        <h1 class="section-title">NOSSA HISTÓRIA</h1>
+        
+        <div class="history-grid">
+            <div class="history-card">
+                <h3>Início</h3>
+                <p>Ideia criada, a partir de um cliente há muito tempo, atrás, pois as viagens de ônibus eram mais baratas mas nem tão conhecidas.</p>
+            </div>
+            <div class="history-card">
+                <h3>Desenvolvimento Web</h3>
+                <p>Essa evolução veio a partir de nós precisarmos se adaptar a atualidade e por conta da troca visão na empresa.</p>
+            </div>
+            <div class="history-card">
+                <h3>Origem e Objetivos</h3>
+                <p>A nossa origem é a partir das família, uma empresa de família, sendo uma das que criou esse cenário de viagens em ônibus e com a troca de geração queremos crescer ainda mais.</p>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="#" onclick="navigateTo('page1')" class="btn">Voltar ao Início</a>
+        </div>
+    </div>
+
+    <!-- Página 4: Avaliação -->
+    <div id="page4" class="page">
+        <a href="#" onclick="navigateTo('page1')" class="back-btn">← Voltar ao Início</a>
+        <h1 class="section-title">AVALIAÇÃO</h1>
+        
+        <div class="evaluation-form">
+            <div class="eval-box">
+                <strong>NO QUE PODEMOS MELHORAR:</strong>
+                <textarea rows="12" placeholder="Escreva sua avaliação aqui..."></textarea>
+            </div>
+            <div class="name-box">
+                <strong>NOME COMPLETO:</strong>
+                <input type="text" placeholder="Seu nome completo">
+                <button onclick="alert('Avaliação enviada com sucesso! Obrigado!')" style="margin-top: 2rem; width: 100%; padding: 15px; background: #fff; color: var(--brown); font-weight: bold;">ENVIAR</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Página 5: Fale Conosco -->
+    <div id="page5" class="page">
+        <a href="#" onclick="navigateTo('page1')" class="back-btn">← Voltar ao Início</a>
+        <div class="contact-page">
+            <div class="logo-circle">
+                <div style="text-align: center; color: white; font-size: 1.1rem; line-height: 1.3;">
+                    <strong style="font-size: 1.6rem;">VIAJE PARA</strong><br>
+                    <span style="font-size: 2.2rem; font-weight: bold;">PRAIAS</span><br>
+                    <small>ÔNIBUS PARA TODO O BRASIL</small>
+                </div>
+            </div>
+            
+            <div>
+                <h1 style="font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 2rem;">Fale Conosco</h1>
+                <p style="font-size: 1.4rem; margin-bottom: 2rem;">@PRAIABUS</p>
+                
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                    <span style="font-size: 2rem;">☎</span>
+                    <div>
+                        <strong>NÚMERO:</strong><br>
+                        <input type="tel" placeholder="(00) 00000-0000" style="width: 280px;">
+                    </div>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <span style="font-size: 2rem;">✉</span>
+                    <div>
+                        <strong>EMAIL:</strong><br>
+                        <input type="email" placeholder="seu@email.com" style="width: 280px;">
+                    </div>
+                </div>
+                
+                <button onclick="alert('Mensagem enviada! Entraremos em contato em breve.')" class="btn" style="margin-top: 3rem; width: 100%; max-width: 300px;">ENVIAR</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Página 6: Destinos -->
+    <div id="page6" class="page">
+        <a href="#" onclick="navigateTo('page1')" class="back-btn">← Voltar ao Início</a>
+        <h1 class="section-title">Pacotes Disponíveis</h1>
+        
+        <div class="destinos-grid">
+            <div class="destino-card">
+                <strong>Porto de Galinhas (Ipojuca, PE)</strong><br>
+                <span style="color: #e67e22; font-size: 1.5rem;">R$500,00</span> por pessoa
+            </div>
+            <div class="destino-card">
+                <strong>Ilha do Campeche (Florianópolis, SC)</strong><br>
+                <span style="color: #e67e22; font-size: 1.5rem;">R$572,00</span> por pessoa
+            </div>
+            <div class="destino-card">
+                <strong>Praia da Pipa (Tibau do Sul, RN)</strong><br>
+                <span style="color: #e67e22; font-size: 1.5rem;">R$750,00</span> por pessoa
+            </div>
+            <div class="destino-card">
+                <strong>Ilha do Mel (Paranaguá, PR)</strong><br>
+                <span style="color: #e67e22; font-size: 1.5rem;">R$699,00</span> por pessoa
+            </div>
+            <div class="destino-card">
+                <strong>Ponta Verde (Maceió, AL)</strong><br>
+                <span style="color: #e67e22; font-size: 1.5rem;">R$610,00</span> por pessoa
+            </div>
+            <div class="destino-card">
+                <strong>Praia do Farol (Arraial do Cabo, RJ)</strong><br>
+                <span style="color: #e67e22; font-size: 1.5rem;">R$450,00</span> por pessoa
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 4rem; font-size: 1.3rem; color: var(--brown);">
+            LEVANDO VOCÊ DIRETO PARA O PARAÍSO!
+        </div>
+    </div>
 
     <script>
-        const upload = document.getElementById('uploadImagem');
-        const preview = document.getElementById('imagemPreview');
-
-        upload.addEventListener('change', function(event) {
-            const arquivo = event.target.files[0];
-
-            if (arquivo) {
-                const leitor = new FileReader();
-
-                // Quando a leitura terminar, altera o src da imagem
-                leitor.onload = function(e) {
-                    preview.src = e.target.result;
-                    preview.style.display = 'block'; // Exibe a imagem
-                }
-
-                // Lê o arquivo como uma URL de dados
-                leitor.readAsDataURL(arquivo);
+        function navigateTo(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape") {
+                navigateTo('page1');
             }
         });
+        
+        // Make "Você é?" button work from header
+        console.log('%cSite Praia Bus carregado com sucesso!', 'color: #e67e22; font-size: 14px;');
     </script>
-   </div>
-   
-   <div class="placar2">
-    <input type="file" accept="image/*" onchange="exibirImagem">
-   </div>
-
-   <h1 class="time1" > <input type="text">
-    <input type="number" min="0" max="1000" placeholder="0">
-   </h1>
-
-   <h1 class="contra"> 
-         X
-   </h1>
-
-   <h1 class="time2"> <input type="text">
-    <input type="number" min="0" max="1000" placeholder="0">
-   </h1>
-
-</form>
 </body>
 </html>
