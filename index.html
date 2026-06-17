@@ -13,11 +13,7 @@
             --dark-brown: #2C211F;
         }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: 'Poppins', sans-serif;
@@ -40,76 +36,108 @@
         
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: 2.1rem;
             font-weight: 700;
-        }
-        
-        nav {
-            display: flex;
-            gap: 2rem;
         }
         
         nav a {
             color: white;
             text-decoration: none;
             font-weight: 500;
-            transition: opacity 0.3s;
+            margin: 0 1rem;
+            cursor: pointer;
         }
         
-        nav a:hover {
-            opacity: 0.8;
-        }
+        nav a:hover { opacity: 0.8; }
         
-        .page {
-            display: none;
-            min-height: 100vh;
-            padding: 2rem 5%;
-        }
-        
-        .page.active {
-            display: block;
-        }
-        
+        .page { display: none; min-height: 100vh; padding: 2rem 5%; }
+        .page.active { display: block; }
+
+        /* ====================== PÁGINA INÍCIO ====================== */
         .hero {
             text-align: center;
-            padding: 4rem 0;
+            padding: 5rem 0 3rem;
         }
-        
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 4.5rem;
-            margin-bottom: 1rem;
+            font-size: 4.2rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
             color: var(--dark-brown);
         }
-        
         .hero img {
-            max-width: 100%;
-            border-radius: 8px;
-            margin: 2rem 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            max-width: 860px;
+            width: 100%;
+            border-radius: 12px;
+            margin: 2.5rem 0;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
         }
-        
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--brown);
-        }
-        
-        .history-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .history-card {
+        .creator-box {
             background-color: var(--brown);
             color: white;
-            padding: 2rem;
-            border-radius: 8px;
+            padding: 1.1rem 3rem;
+            display: inline-block;
+            font-weight: bold;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            margin-top: 1rem;
         }
-        
+
+        /* ====================== MENU ====================== */
+        .menu-page {
+            text-align: center;
+            padding-top: 6rem;
+        }
+        .menu-page h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+        }
+        .menu-page h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 4.5rem;
+            color: var(--brown);
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .menu-item {
+            background-color: white;
+            padding: 2rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            font-size: 1.55rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: var(--dark-brown);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .menu-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            color: var(--brown);
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--brown);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            z-index: 200;
+            text-decoration: none;
+        }
+
         .btn {
             background-color: var(--brown);
             color: white;
@@ -119,37 +147,56 @@
             font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-            margin: 1rem 0;
         }
-        
-        .btn:hover {
-            background-color: #5C4A4A;
-            transform: translateY(-3px);
+        .btn:hover { background-color: #5C4A4A; transform: translateY(-3px); }
+
+        /* Estilos das outras páginas (mantidos) */
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--brown);
         }
-        
-        .back-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
+        .history-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        .history-card {
             background-color: var(--brown);
             color: white;
-            padding: 10px 20px;
-            border-radius: 4px;
-            text-decoration: none;
-            z-index: 200;
-            font-size: 0.95rem;
+            padding: 2.5rem;
+            border-radius: 12px;
         }
-        
-        /* Nova página de Login */
+        .avaliacao-grid {
+            display: grid;
+            grid-template-columns: 2.8fr 1fr;
+            gap: 2rem;
+        }
+        .avaliacao-box, .nome-box {
+            background-color: var(--brown);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+        }
+        .pacotes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 1.5rem;
+        }
+        .pacote-card {
+            background: rgba(255,255,255,0.95);
+            color: var(--dark-brown);
+            padding: 1.8rem;
+            border-radius: 16px;
+        }
         .login-page {
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 80vh;
         }
-        
         .login-box {
             background: white;
             padding: 3rem 2.5rem;
@@ -159,178 +206,158 @@
             width: 100%;
             text-align: center;
         }
-        
-        .login-box h1 {
-            font-family: 'Playfair Display', serif;
-            color: var(--brown);
-            margin-bottom: 1.5rem;
-        }
-        
-        .input-group {
-            margin-bottom: 1.5rem;
-            text-align: left;
-        }
-        
-        .input-group label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: 500;
-        }
-        
-        input, select {
-            width: 100%;
-            padding: 14px;
-            border: 2px solid #ddd;
-            border-radius: 6px;
-            font-size: 1rem;
-            transition: border 0.3s;
-        }
-        
-        input:focus, select:focus {
-            border-color: var(--brown);
-            outline: none;
-        }
-        
-        .role-options {
-            display: flex;
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-        
-        .role-btn {
-            flex: 1;
-            padding: 12px;
-            border: 2px solid var(--brown);
-            background: white;
-            color: var(--brown);
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-        
-        .role-btn.active {
-            background: var(--brown);
-            color: white;
-        }
-        
-        .success-msg {
-            color: #28a745;
-            margin-top: 1rem;
-            display: none;
-        }
     </style>
 </head>
 <body>
-    <!-- Página 1: Início -->
+
+    <!-- ==================== PÁGINA 1: INÍCIO ==================== -->
     <div id="page1" class="page active">
         <header>
             <div class="logo">PRAIA BUS</div>
             <nav>
-                <a href="#" onclick="navigateTo('page1')">Início</a>
-                <a href="#" onclick="navigateTo('page2')">Menu</a>
-                <a href="#" onclick="navigateTo('page3')">Sobre Nós</a>
-                <a href="#" onclick="navigateTo('page4')">Avaliações</a>
-                <a href="#" onclick="navigateTo('page6')">Destinos</a>
+                <a onclick="navigateTo('page1')">Início</a>
+                <a onclick="navigateTo('page2')">Menu</a>
+                <a onclick="navigateTo('page3')">Sobre Nós</a>
+                <a onclick="navigateTo('page4')">Avaliações</a>
+                <a onclick="navigateTo('page6')">Destinos</a>
             </nav>
-            <!-- Botão transformado -->
             <button onclick="navigateTo('page7')" class="btn" 
-                    style="background-color: white; color: var(--brown); padding: 10px 24px; font-weight: bold; border: none;">
+                    style="background-color: white; color: var(--brown); padding: 10px 28px; font-weight: bold;">
                 VOCÊ É?
             </button>
         </header>
         
         <div class="hero">
-            <h1>BEM-VINDO A SUA<br><span style="font-style: italic; font-size: 3.8rem;">Futura Viagem</span></h1>
-            <img src="https://picsum.photos/id/1015/800/400" alt="Praia paradisíaca" style="max-width: 800px;">
-            <div style="margin-top: 2rem; background-color: var(--brown); color: white; padding: 1rem; display: inline-block; font-weight: bold;">
-                CRIADO POR: BERNARDO FARIA
-            </div>
-        </div>
-        
-        <div style="text-align: center; margin: 3rem 0;">
-            <a href="#" onclick="navigateTo('page3')" class="btn">CONHEÇA NOSSO TRABALHO</a>
+            <h1>BEM-VINDO A SUA<br><span style="font-style: italic;">Futura Viagem</span></h1>
+            <img src="https://picsum.photos/id/1015/1200/620" alt="Praia paradisíaca">
+            <div class="creator-box">CRIADO POR: BERNARDO FARIA</div>
         </div>
     </div>
 
-    <!-- ... (outras páginas mantidas iguais: page2, page3, page4, page5, page6) ... -->
+    <!-- ==================== PÁGINA 2: MENU ==================== -->
+    <div id="page2" class="page">
+        <a href="#" onclick="navigateTo('page1')" class="back-btn">← Voltar ao Início</a>
+        <div class="menu-page">
+            <h1>MENU DO</h1>
+            <h2>Sítio</h2>
+            <div class="menu-grid">
+                <div class="menu-item" onclick="navigateTo('page1')"><span>✦</span> Início</div>
+                <div class="menu-item" onclick="navigateTo('page7')"><span>✦</span> Você é?</div>
+                <div class="menu-item" onclick="navigateTo('page3')"><span>✦</span> Sobre Nós</div>
+                <div class="menu-item" onclick="navigateTo('page4')"><span>✦</span> Avaliação</div>
+                <div class="menu-item" onclick="navigateTo('page6')"><span>✦</span> Destinos</div>
+            </div>
+        </div>
+    </div>
 
-    <!-- Nova Página 7: Você É? / Login -->
+    <!-- ==================== PÁGINA 3: SOBRE NÓS ==================== -->
+    <div id="page3" class="page">
+        <a href="#" onclick="navigateTo('page1')" class="back-btn">← Voltar ao Início</a>
+        <div style="max-width: 1100px; margin: 0 auto; padding-top: 60px;">
+            <h1 class="section-title">NOSSA HISTÓRIA</h1>
+            <div class="history-grid">
+                <div class="history-card">
+                    <h3>Início</h3>
+                    <p>Ideia criada, a partir de um cliente há muito tempo, atrás, pois as viagens de ônibus eram mais baratas mas nem tão conhecidas.</p>
+                </div>
+                <div class="history-card">
+                    <h3>Desenvolvimento Web</h3>
+                    <p>Essa evolução veio a partir de nós precisarmos se adaptar a atualidade e por conta da troca visão na empresa.</p>
+                </div>
+                <div class="history-card">
+                    <h3>Origem e Objetivos</h3>
+                    <p>A nossa origem é a partir das família, uma empresa de família, sendo uma das que criou esse cenário de viagens em ônibus e com a troca de geração queremos crescer ainda mais.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PÁGINA 4: AVALIAÇÕES ==================== -->
+    <div id="page4" class="page">
+        <a href="#" onclick="navigateTo('page1')" class="back-btn">← Voltar ao Início</a>
+        <div style="max-width: 1100px; margin: 0 auto; padding-top: 60px;">
+            <h1 class="section-title">AVALIAÇÃO</h1>
+            <div class="avaliacao-grid">
+                <div class="avaliacao-box">
+                    <strong>NO QUE PODEMOS MELHORAR:</strong>
+                    <textarea style="margin-top: 20px; width: 100%; height: 220px; background: rgba(255,255,255,0.1); color: white; border: 2px solid rgba(255,255,255,0.4); border-radius: 8px; padding: 15px;" placeholder="Escreva sua sugestão ou crítica aqui..."></textarea>
+                </div>
+                <div class="nome-box">
+                    <strong>NOME COMPLETO:</strong>
+                    <input type="text" style="margin-top: 15px; width: 100%; background: rgba(255,255,255,0.1); color: white; border: 2px solid rgba(255,255,255,0.4); border-radius: 8px; padding: 12px;" placeholder="Seu nome completo">
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <button class="btn" style="padding: 14px 50px;">ENVIAR AVALIAÇÃO</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PÁGINA 6: DESTINOS ==================== -->
+    <div id="page6" class="page">
+        <a href="#" onclick="navigateTo('page1')" class="back-btn">← Voltar ao Início</a>
+        <div style="max-width: 1100px; margin: 0 auto; padding-top: 80px; text-align: center;">
+            <h1 class="section-title" style="color: white; background: var(--brown); display: inline-block; padding: 10px 40px; border-radius: 50px;">Pacotes Disponíveis</h1>
+            <div class="pacotes-grid" style="margin-top: 3rem;">
+                <div class="pacote-card"><strong>Porto de Galinhas (Ipojuca, PE)</strong><br>R$500,00 por pessoa</div>
+                <div class="pacote-card"><strong>Ilha do Campeche (Florianópolis, SC)</strong><br>R$572,00 por pessoa</div>
+                <div class="pacote-card"><strong>Praia da Pipa (Tibau do Sul, RN)</strong><br>R$750,00 por pessoa</div>
+                <div class="pacote-card"><strong>Ilha do Mel (Paranaguá, PR)</strong><br>R$699,00 por pessoa</div>
+                <div class="pacote-card"><strong>Ponta Verde (Maceió, AL)</strong><br>R$610,00 por pessoa</div>
+                <div class="pacote-card"><strong>Praia do Farol (Arraial do Cabo, RJ)</strong><br>R$450,00 por pessoa</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PÁGINA 7: VOCÊ É? (LOGIN) ==================== -->
     <div id="page7" class="page">
         <a href="#" onclick="navigateTo('page1')" class="back-btn">← Voltar ao Início</a>
-        
         <div class="login-page">
             <div class="login-box">
                 <h1>Você é?</h1>
                 <p style="margin-bottom: 2rem; color: #555;">Faça login para continuar</p>
                 
-                <div class="role-options">
-                    <button class="role-btn active" onclick="selectRole(this)">Passageiro</button>
-                    <button class="role-btn" onclick="selectRole(this)">Parceiro / Motorista</button>
+                <div style="display: flex; gap: 1rem; margin: 1.5rem 0;">
+                    <button class="btn" style="flex:1; background: var(--brown);" onclick="selectRole(this)">Passageiro</button>
+                    <button class="btn" style="flex:1; background: white; color: var(--brown); border: 2px solid var(--brown);" onclick="selectRole(this)">Parceiro / Motorista</button>
                 </div>
                 
-                <div class="input-group">
+                <div style="margin-bottom: 1.5rem; text-align: left;">
                     <label>E-mail</label>
-                    <input type="email" id="email" placeholder="seu@email.com">
+                    <input type="email" id="email" placeholder="seu@email.com" style="width:100%; padding:14px;">
                 </div>
-                
-                <div class="input-group">
+                <div style="margin-bottom: 1.5rem; text-align: left;">
                     <label>Senha</label>
-                    <input type="password" id="senha" placeholder="••••••••">
+                    <input type="password" id="senha" placeholder="••••••••" style="width:100%; padding:14px;">
                 </div>
                 
-                <button onclick="fazerLogin()" class="btn" style="width: 100%; padding: 16px; font-size: 1.1rem;">
-                    ENTRAR
-                </button>
-                
-                <p style="margin-top: 1.5rem; font-size: 0.95rem;">
-                    Não tem conta? <a href="#" style="color: var(--brown); text-decoration: underline;">Cadastre-se</a>
-                </p>
-                
-                <div id="successMsg" class="success-msg">
-                    ✅ Login realizado com sucesso!
-                </div>
+                <button onclick="fazerLogin()" class="btn" style="width:100%; padding:16px;">ENTRAR</button>
             </div>
         </div>
     </div>
 
     <script>
         function navigateTo(pageId) {
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
             window.scrollTo(0, 0);
         }
 
         function selectRole(btn) {
-            document.querySelectorAll('.role-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+            const buttons = btn.parentElement.children;
+            for (let b of buttons) b.style.background = b.style.border ? 'white' : 'var(--brown)';
+            btn.style.background = btn.style.border ? 'var(--brown)' : 'white';
+            btn.style.color = btn.style.border ? 'white' : 'var(--brown)';
         }
 
         function fazerLogin() {
-            const email = document.getElementById('email').value;
-            const senha = document.getElementById('senha').value;
-            
-            if (email && senha) {
-                document.getElementById('successMsg').style.display = 'block';
-                setTimeout(() => {
-                    alert('Login realizado com sucesso! 🎉\nBem-vindo ao Praia Bus.');
-                    navigateTo('page1');
-                }, 1500);
+            if (document.getElementById('email').value && document.getElementById('senha').value) {
+                alert('Login realizado com sucesso! 🎉\nBem-vindo ao Praia Bus.');
+                navigateTo('page1');
             } else {
                 alert('Por favor, preencha o e-mail e a senha.');
             }
         }
-
-        // Tecla Escape volta para a página inicial
-        document.addEventListener('keydown', function(e) {
-            if (e.key === "Escape") {
-                navigateTo('page1');
-            }
-        });
-        
-        console.log('%cSite Praia Bus atualizado com sucesso!', 'color: #e67e22; font-size: 14px;');
     </script>
 </body>
 </html>
